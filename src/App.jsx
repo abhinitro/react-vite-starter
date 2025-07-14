@@ -1,21 +1,20 @@
-import { useState } from 'react'
-import './App.css'
-import Header from './Header'
-import Footer from './Footer'
+import React from 'react';
+import FormBuilder from './components/FormBuilder';
 
-const global = {
-  name: "Abhilash",
-  age: 30,
-  city: "Bangalore"
-}
 
-function App() {
+class App extends React.Component {
 
-  return (
-    <>
-      <Footer myData={global} information={'String'}/>
-    </>
-  )
+  constructor(props) {
+    console.log('App component is being constructed');
+    super(props);
+    this.state = {favoritefood: "rice"};
+  }
+ render() {
+    console.log('App component is rendering');
+    return (
+      <FormBuilder></FormBuilder>
+    );
+  }
 }
 
 export default App

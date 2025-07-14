@@ -1,8 +1,15 @@
 import React from "react";
-const Header = () => {
+const Header = (props) => {
+
+    const { options } = props;
     return (
         <div>
-            <h1>Welcome to My React Ap Heap</h1>
+            {
+                options.map(item=>{
+                    return <div key={item.value}>{item.label}  </div>
+                                            })
+            }
+           
         </div>
 
     );
