@@ -1,25 +1,45 @@
-import React from 'react';
-import FormBuilder from './components/FormBuilder';
-import Carousel from './components/Carousel';
+import React, { useState, useEffect, use } from "react";
+import Child from "./Child";
 
 
+function App(props) {
+  const [name, setName] = useState('default Value');
+  const [list, setList] = useState([]);
+  const [age, setAge] = useState('26');
+  const changeName = (newName) => {
+    console.log(`Changing app name to: ${newName}`);
+    setName(newName);
+  };
 
- const images = [
-    <img src="https://imagekit.io/blog/content/images/2020/06/LinkedIn-1200_628.png" alt="1" />,
-    <img src="https://imagekit.io/blog/content/images/2020/06/LinkedIn-1200_628.png" alt="2" />,
-    <img src="https://imagekit.io/blog/content/images/2020/06/LinkedIn-1200_628.png" alt="3" />,
-  ];
+  const fn = async () => {
+    
+    const data = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const json = await data.json();
+    console.log(json);
+    setList(json);
+    console.log("List updated with fetched data");
 
-class App extends React.Component {
-
-  constructor(props) {
-    console.log('App component is being constructed');
-    super(props);
-    this.state = {favoritefood: "rice"};
   }
- render() {
-    return <Carousel items={images} />;
-  }
+
+  useEffect(() => {
+    fn()
+  }, []);
+
+  useEffect(() => {
+
+    console.log("App component did update");
+
+  }, [name, age]);
+
+
+
+
+  return (
+    <div>
+
+      {list.length === 0 ? <div>Loaderr...</div> : <Child></Child>}
+    </div>
+  );
 }
 
-export default App
+export default App;
