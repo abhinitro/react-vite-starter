@@ -1,43 +1,27 @@
 import React, { useState, useEffect, use } from "react";
-import Child from "./Child";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Blog from "./pages/Blog";
+import Header from "./components/Layout/Header";
+import Layout from "./components/Layout";
+// import Header from "./components/Layout/Header";
 
 
 function App(props) {
-  const [name, setName] = useState('default Value');
-  const [list, setList] = useState([]);
-  const [age, setAge] = useState('26');
-  const changeName = (newName) => {
-    console.log(`Changing app name to: ${newName}`);
-    setName(newName);
-  };
-
-  const fn = async () => {
-    
-    const data = await fetch('https://jsonplaceholder.typicode.com/posts');
-    const json = await data.json();
-    console.log(json);
-    setList(json);
-    console.log("List updated with fetched data");
-
-  }
-
-  useEffect(() => {
-    fn()
-  }, []);
-
-  useEffect(() => {
-
-    console.log("App component did update");
-
-  }, [name, age]);
-
-
-
-
   return (
     <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/blog" element={<Blog />} />
+          </Route>
 
-      {list.length === 0 ? <div>Loaderr...</div> : <Child></Child>}
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
