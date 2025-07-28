@@ -1,6 +1,7 @@
 import AdminLayout from "./components/AdminLayout";
 import Layout from "./components/Layout";
 import About from "./pages/About";
+import Blog from "./pages/Blog";
 import Home from "./pages/Home";
 
 const routes = [
@@ -10,7 +11,7 @@ const routes = [
     children: [
       { index: true, element: <Home /> },
       { path: "about", element: <About /> },
-      { path: "blog", element: <About /> },
+      { path: "blog", element: <Blog /> },
     ],
   },
   {
@@ -19,7 +20,7 @@ const routes = [
     children: [
       { path: "", element: <Home /> },
       { path: "about", element: <About /> },
-      { path: "blog", element: <About /> },
+      { path: "blog", element: <Blog/> },
     ],
   },
 ];

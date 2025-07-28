@@ -1,4 +1,3 @@
-import React, { useState, useEffect, use } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -10,7 +9,7 @@ import AppRoutes from "./pages/AppRoutes";
 // import Header from "./components/Layout/Header";
 
 
-function App(props) {
+function App() {
   return (
     <div>
       <BrowserRouter>
