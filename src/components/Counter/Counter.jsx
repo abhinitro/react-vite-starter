@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import withLoading from "../../hoc/withLoading";
 
 export const Counter = (props) => {
@@ -13,4 +13,5 @@ export const Counter = (props) => {
 //const MemoizedCounter = React.memo(Counter);
 const withLoadingComponent = withLoading(Counter);
 // eslint-disable-next-line react-refresh/only-export-components
-export default React.memo(withLoadingComponent);
+export default memo(withLoadingComponent);
+
